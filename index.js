@@ -3,12 +3,30 @@
 // Scene
 const scene = new THREE.Scene()
 
+// Group
+const group = new THREE.Group()
+
 //Mesh - Object
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 'purple' })
 const mesh = new THREE.Mesh(geometry, material)
 
-scene.add(mesh)
+mesh.position.z = 1
+
+// MathTwo
+const geometryT = new THREE.BoxGeometry(1, 1, 1)
+const materialT = new THREE.MeshBasicMaterial({ color: 'red' })
+const meshT = new THREE.Mesh(geometryT, materialT)
+
+meshT.position.y = 2
+
+group.add(mesh, meshT)
+group.position.x = 3
+scene.add(group)
+
+// Axes Helper
+const axesHelper = new THREE.AxesHelper(4)
+scene.add(axesHelper)
 
 //Camera
 const { width, height } = {
@@ -16,12 +34,13 @@ const { width, height } = {
   height: window.innerHeight,
 }
 
-console.log(width, height)
+console.log(`width: ${width}px and height: ${height}px`)
 // Campo de visão, aspecto, próximo, distante
 const camera = new THREE.PerspectiveCamera(75, width / height)
-camera.position.z = 3
 camera.position.x = 1
 camera.position.y = 1
+camera.position.z = 5
+
 scene.add(camera)
 
 // Renderer
