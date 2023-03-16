@@ -12,6 +12,7 @@ const material = new THREE.MeshBasicMaterial({ color: 'purple' })
 const mesh = new THREE.Mesh(geometry, material)
 
 mesh.position.z = 1
+mesh.rotation.y = (Math.PI * 2) / 1.2
 
 // MathTwo
 const geometryT = new THREE.BoxGeometry(1, 1, 1)
@@ -19,6 +20,7 @@ const materialT = new THREE.MeshBasicMaterial({ color: 'red' })
 const meshT = new THREE.Mesh(geometryT, materialT)
 
 meshT.position.y = 2
+meshT.rotation.x = Math.PI * 1.3
 
 group.add(mesh, meshT)
 group.position.x = 3
